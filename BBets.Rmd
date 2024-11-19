@@ -111,14 +111,35 @@ For my strategy we guessed the amount of odds until the profit reached 0. The od
 
 <!--Explain and display the results of your method of coming up with the estimate of professor Brownlows betting profits!-->
 
+```{r}
+mymin2=numeric(1000)
+ for (i in 1:1000) {
+    mymin2[i]=BrLw(numClass=20)
+ }
+smymin2 <- sort (mymin2)
+
+low2=smymin2[25]
+high2=smymin2[975]
+
+mean(smymin2)
+
+cat("Low value (25th percentile):",low2, "\n")
+cat("High value (975th percentile):",high2, "\n")
+
+hist(smymin2,
+     main="Browwnlow Class size histogram",
+     xlab ="Values",
+     ylab="Frequency",
+     col="skyblue",
+     border="blue",
+     breaks=100)
+```
 
 
-
-
-
-
+The code simulates Professor Brownlow's betting profits 1,000 times, capturing the variability of outcomes. It calculates the 95% confidence interval by identifying the 25th and 975th values in the sorted results, providing a range where the profits are likely to fall. Additionally, it computes the mean of the simulations and visualizes the profit distribution with a histogram.
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If professor Brownlow is consistantly making or losing money how could he change his payout so that his profits center on zero?  Also discuss what size his class should be in order to have his current scheme balance at zero profit.!-->
 
+To center Professor Brownlow's profits around zero, he could adjust his payout amounts to better align with the probabilities of the betting outcomes, ensuring they are fair and unbiased. Additionally, adjusting the class size could help balance profits, as larger or smaller class sizes may alter the distribution of outcomes and shift the profit center, requiring analysis to find the optimal size for zero-profit balance.
